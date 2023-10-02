@@ -28,4 +28,14 @@ public class ProjectService {
         }
         return projectRepository.findByProjectIdentifier(identifier);
     }
+    public Iterable<Project> findAllProjects(){
+        return projectRepository.findAll();
+    }
+    public void deleteProjectByIdentifier(String projectIdentifier){
+        Project returnedProject=projectRepository.findByProjectIdentifier(projectIdentifier);
+        if(returnedProject==null){
+            throw new ProjectNotFoundException("Project "+projectIdentifier+" does not exist");
+        }
+        projectRepository.delete(returnedProject);
+    }
 }
