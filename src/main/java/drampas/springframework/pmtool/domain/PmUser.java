@@ -3,6 +3,7 @@ package drampas.springframework.pmtool.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,6 +29,7 @@ public class PmUser implements UserDetails {
     @NotBlank(message = "Full name required")
     private String fullName;
     @NotBlank(message = "Password required")
+    @Min(value = 6,message = "Password needs to be at least 6 characters long")
     private String password;
     @Transient
     private String confirmPassword;
@@ -42,7 +44,7 @@ public class PmUser implements UserDetails {
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
-//user details methods,maybe i should create a new class for them??//
+//user details methods,maybe I should create a new class for them??//
     @Override
     @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {

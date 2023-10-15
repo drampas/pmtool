@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PmUserRepository extends CrudRepository<PmUser,Long> {
+
+    PmUser findByUsername(String username);
 }

@@ -16,7 +16,7 @@ public class PmUserService {
     public PmUser saveUser(PmUser newUser){
         try {
             newUser.setPassword(bCryptPasswordEncoder.encode(newUser.getPassword()));
-            newUser.setConfirmPassword("");//to not return the password in the response
+            newUser.setConfirmPassword("");//do not show the password in the response
             return pmUserRepository.save(newUser);
         }catch (Exception e){
             throw new UsernameAlreadyExistsException("Username:"+newUser.getUsername()+" already exists");
