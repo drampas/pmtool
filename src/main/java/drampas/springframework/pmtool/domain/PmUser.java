@@ -11,8 +11,10 @@ import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -35,6 +37,8 @@ public class PmUser implements UserDetails {
     private String confirmPassword;
     private Date createdAt;
     private Date updatedAt;
+    @OneToMany(cascade = CascadeType.REFRESH,fetch = FetchType.EAGER,orphanRemoval = true,mappedBy = "user")
+    private List<Project> projects = new ArrayList<>();
 
     @PrePersist
     protected void onCreate(){

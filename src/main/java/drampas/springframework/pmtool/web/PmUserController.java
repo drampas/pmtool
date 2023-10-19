@@ -27,11 +27,9 @@ import static drampas.springframework.pmtool.security.SecurityConstants.TOKEN_PR
 @RequiredArgsConstructor
 public class PmUserController {
 
-    private final CustomUserDetailsService userDetailsService;
     private final ValidationService validationService;
     private final UserValidator userValidator;
     private final AuthenticationService authenticationService;
-    private final JwtTokenProvider tokenProvider;
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody PmUser user, BindingResult result){

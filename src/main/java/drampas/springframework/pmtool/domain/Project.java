@@ -1,6 +1,7 @@
 package drampas.springframework.pmtool.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -35,8 +36,12 @@ public class Project {
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date updatedAt;
     @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "project")
+    @JsonIgnore
     private Backlog backlog;
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    private PmUser user;
+    private String projectLeader;
     @PrePersist
     protected void onCreate(){
         this.createdAt = new Date();
