@@ -3,8 +3,8 @@ package drampas.springframework.pmtool.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,6 +17,7 @@ import java.util.Date;
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
 public class PmUser implements UserDetails {
     @Id
@@ -29,7 +30,6 @@ public class PmUser implements UserDetails {
     @NotBlank(message = "Full name required")
     private String fullName;
     @NotBlank(message = "Password required")
-    @Min(value = 6,message = "Password needs to be at least 6 characters long")
     private String password;
     @Transient
     private String confirmPassword;
