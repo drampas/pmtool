@@ -48,7 +48,7 @@ public class ProjectService {
                 if(!existingProject.getUser().getUsername().equals(username)){
                     throw new ProjectNotFoundException("Project "+project.getProjectIdentifier()+" not found in your account");
                 }
-            }else throw new ProjectNotFoundException("Project "+project.getProjectIdentifier()+" does not exist");
+            }else throw new ProjectNotFoundException("The project you are trying to update does not exist");
 
         }
         return saveOrUpdate(project,username);
