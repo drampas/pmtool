@@ -40,7 +40,7 @@ public class Project {
     private Backlog backlog;
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
-    private PmUser user;
+    private Team team;
     private String projectLeader;
     @PrePersist
     protected void onCreate(){

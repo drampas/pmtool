@@ -37,8 +37,10 @@ public class PmUser implements UserDetails {
     private String confirmPassword;
     private Date createdAt;
     private Date updatedAt;
-    @OneToMany(cascade = CascadeType.REFRESH,fetch = FetchType.EAGER,orphanRemoval = true,mappedBy = "user")
-    private List<Project> projects = new ArrayList<>();
+//    @OneToMany(cascade = CascadeType.REFRESH,fetch = FetchType.EAGER,orphanRemoval = true,mappedBy = "user")
+//    private List<Project> projects = new ArrayList<>();
+    @ManyToMany(mappedBy = "members")
+    private List<Team> teams=new ArrayList<>();
 
     @PrePersist
     protected void onCreate(){
